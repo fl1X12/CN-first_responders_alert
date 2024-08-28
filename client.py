@@ -13,6 +13,11 @@ ADDR=(SERVER, PORT)
 client=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
 client.connect(ADDR)
 
+ssl_context=ssl.create_default_context(ssl.Purpose.SERVER_AUTH)
+ssl_context.check_hostname = False
+ssl_context.load_verify_locations("C:/Users/shanm/OneDrive/Desktop/teja/code main/CN/server.pem")
+
+
 def send(msg):
     message=msg.encode(FORMAT)
     msg_length=len(message)
